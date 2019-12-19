@@ -180,10 +180,10 @@ class Bast extends CI_Controller {
         $this->load->library('pdf');
 
         $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->filename = "laporan-Test.pdf";
+        $this->pdf->filename = "bas-pemeriksaan.pdf";
         $this->pdf->load_view('cetak/pemeriksaan',$data);
 
-        // $this->load->view('cetak/pemeriksaan');
+        // $this->load->view('cetak/pemeriksaan',$data);
     }
 
     public function cetakterima($idkontrak)
@@ -192,7 +192,7 @@ class Bast extends CI_Controller {
         $this->load->library('pdf');
 
         $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->filename = "laporan-Test.pdf";
+        $this->pdf->filename = "bast.pdf";
         $this->pdf->load_view('cetak/serahterima',$data);
 
         // $this->load->view('cetak/serahterima',$data);
@@ -204,7 +204,7 @@ class Bast extends CI_Controller {
         $this->load->library('pdf');
 
         $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->filename = "laporan-Test.pdf";
+        $this->pdf->filename = "bas-admin.pdf";
         $this->pdf->load_view('cetak/administratif',$data);
 
         // $this->load->view('cetak/serahterima',$data);
@@ -216,7 +216,7 @@ class Bast extends CI_Controller {
         $this->load->library('pdf');
 
         $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->filename = "laporan-Test.pdf";
+        $this->pdf->filename = "bas-pembyaran.pdf";
         $this->pdf->load_view('cetak/pembayaran',$data);
 
         // $this->load->view('cetak/serahterima',$data);
@@ -228,7 +228,7 @@ class Bast extends CI_Controller {
         $this->load->library('pdf');
 
         $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->filename = "laporan-Test.pdf";
+        $this->pdf->filename = "lamp-pemeriksaan.pdf";
         $this->pdf->load_view('cetak/lamp_pemeriksaan',$data);
     }
 
@@ -238,7 +238,7 @@ class Bast extends CI_Controller {
         $this->load->library('pdf');
 
         $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->filename = "laporan-Test.pdf";
+        $this->pdf->filename = "lamp-bast.pdf";
         $this->pdf->load_view('cetak/lamp_serahterima',$data);
     }
 
@@ -248,7 +248,7 @@ class Bast extends CI_Controller {
         $this->load->library('pdf');
 
         $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->filename = "laporan-Test.pdf";
+        $this->pdf->filename = "lamp-pembayaran.pdf";
         $this->pdf->load_view('cetak/lamp_pembayaran',$data);
     }
 

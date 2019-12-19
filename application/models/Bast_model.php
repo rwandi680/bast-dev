@@ -170,6 +170,7 @@ class Bast_model extends CI_Model {
         $this->db->select('kode_paket');
         $this->db->select('nama_paket');
         $this->db->select('penyedia');
+        $this->db->select('norek_penyedia');
         $this->db->select('alamat_penyedia');
         $this->db->select('wakil_penyedia');
         $this->db->select('jabatan_wakil');

@@ -65,6 +65,8 @@ body{
     }else{
         $no_bapem = $nobapem;
     }
+    $id = $p->id_bast;
+    $qlam = $this->db->query("SELECT * FROM tbl_lamp_bast WHERE id_bast = '$id' AND jenis = 1");
 
 ?>
 
@@ -163,8 +165,13 @@ body{
     <p style='font-size:12.0pt;margin-bottom:2pt;text-align:center;'>Pasal 2</p>
 
     <p style='font-size:12.0pt;margin-bottom:2pt;text-align:jusify;'>Penyerahan sebagaimana dimaksud dalam pasal 1 berupa: </p>
-    <?php echo "1. Lampiran 1"; ?>
-    <p style='font-size:12.0pt;margin-bottom:2pt;text-align:center;'>Pasal 3</p>
+    <?php $n=1; foreach($qlam->result() as $r) {
+        echo $n++;
+        echo ". ";
+        echo $r->uraian."<br>";
+
+    } ?>
+    <p style='font-size:12.0pt;margin-bottom:2pt;margin-top:50pt;text-align:center;'>Pasal 3</p>
     <p style='font-size:12.0pt;margin-bottom:2pt;text-align:jusify;'>Dengan adanya Serah Terima ini maka selanjutnya tanggung jawab atas hasil pekerjaan tersebut beralih dari PIHAK KEDUA kepada PIHAK KESATU.</p>
 
     <p style='font-size:12.0pt;text-align:justify;'>Demikian Berita Acara Serah Terima ini dibuat untuk dipergunakan sebagaimana mestinya.</p>

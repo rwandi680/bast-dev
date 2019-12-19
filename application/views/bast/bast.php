@@ -23,14 +23,14 @@
                         <a href='". site_url('bast/cetaklamppem/'.$r->id_kontrak)  ."' target=_blank class='btn btn-success'>Lamp</a>
                         </td>
                         <td>
-                        <a href='". site_url('bast/cetakterima/'.$r->id_kontrak)  ."' target=_blank>$r->no_bast</a>
+                        <a href='". site_url('bast/cetakterima/'.$r->id_kontrak)  ."' target=_blank>BA</a>
                         <a href='". site_url('bast/cetaklampterima/'.$r->id_kontrak)  ."' target=_blank>Lamp</a>
                         </td>
                         <td>
-                        <a href='". site_url('bast/cetakadm/'.$r->id_kontrak)  ."' target=_blank>$r->no_administratif</a>
+                        <a href='". site_url('bast/cetakadm/'.$r->id_kontrak)  ."' target=_blank>BA</a>
                         </td>
                         <td>
-                        <a href='". site_url('bast/cetakbayar/'.$r->id_kontrak)  ."' target=_blank>$r->no_pembayaran</a>
+                        <a href='". site_url('bast/cetakbayar/'.$r->id_kontrak)  ."' target=_blank>BA</a>
                         <a href='". site_url('bast/cetaklampbayar/'.$r->id_kontrak)  ."' target=_blank>Lamp</a>
                         </td>
                         <td>

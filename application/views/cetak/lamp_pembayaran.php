@@ -11,10 +11,8 @@ body{
  p.MsoNormal, li.MsoNormal, div.MsoNormal
 	{margin-top:0cm;
 	margin-right:0cm;
-	margin-bottom:8.0pt;
 	margin-left:0cm;
-	line-height:107%;
-    font-size:11.0pt;}
+    font-size:11pt;}
 
 </style>
 
@@ -92,7 +90,10 @@ body{
             <th>Jumlah</th>
             <th>Keterangan</th>
         </tr>
-        <?php foreach($qlam->result() as $r) {
+        <?php 
+        $sum = 0;
+        foreach($qlam->result() as $r) {
+            $sum = $sum + ($r->nominal * $r->volume);
         echo"
         <tr>
             <td> $r->uraian </td>
@@ -102,9 +103,24 @@ body{
             <td> $r->keterangan </td>
         </tr>";
         } ?>
+        <tr>
+            <td colspan="3" style='text-align:center'>Sub Total</td>
+            <td style='text-align:right;'><?php echo number_format($sum); ?></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3" style='text-align:center'>PPN 10%</td>
+            <td style='text-align:right;'><?php echo number_format($sum / 100 * 10); ?></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3" style='text-align:center'>TOTAL</td>
+            <td style='text-align:right;'><b><?php echo number_format(($sum / 100 * 10) + $sum); ?></b></td>
+            <td></td>
+        </tr>
     </table>
 
-    <table cellspacing=0 cellpadding=0 style='border-collapse:collapse;border:none;' width="100%">
+    <table cellspacing=0 cellpadding=0 style='border-collapse:collapse;border:1px;' width="100%">
         <tr style='height:122.0pt'>
             <td width=50% valign=top style='padding:0cm 5.4pt 0cm 5.4pt;'>
                 <br>
@@ -115,8 +131,9 @@ body{
                 <br>
                 <br>
                 <br>
+
                 <p style='margin-bottom:0;text-align:center;line-height:normal'><b><u><?php echo $p->wakil_penyedia ?></u></b></p>
-                <p style='margin-top:0;text-align:center;line-height:normal'><?php echo $p->jabatan_wakil ?></p>
+                <p style='margin-top:0;margin-bottom:0;text-align:center;line-height:normal'><?php echo $p->jabatan_wakil ?></p>
             </td>
             <td width=50% valign=top style='padding:0cm 5.4pt 0cm 5.4pt;'>
                 <p style="margin-bottom:0;text-align:center;">Cijulang, <?php echo date_indo($tglba) ?></p>
@@ -128,7 +145,7 @@ body{
                 <br>
                 <br>
                 <p style='margin-bottom:0;text-align:center;line-height:normal'><b><u><?php echo $p->nama_ppk ?></u></b></p>
-                <p style='margin-top:0;text-align:center;line-height:normal'>NIP. <?php echo $p->nip_ppk ?></p>
+                <p style='margin-top:0;margin-bottom:0;text-align:center;line-height:normal'>NIP. <?php echo $p->nip_ppk ?></p>
             </td>
         </tr>
     </table>
