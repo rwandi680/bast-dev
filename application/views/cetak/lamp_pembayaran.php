@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Lampiran BA Serahterima</title>
+<title>Lampiran BA Pembayaran</title>
 <style>
 
 body{
@@ -41,14 +41,15 @@ body{
     <br>
 <?php  foreach($pem as $p){
     $noba = $p->no_pembayaran;
+    $tglba = $p->tgl_pembayaran;
+    $hari = hari_indo($tglba);
+    $thn = date('Y',strtotime($tglba));
     if(empty($noba) || $noba == NULL || $noba == "-")
     {
-        $no_ba = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /BPKD/".date('Y');
+        $no_ba = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BPKD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/".$thn;
     }else{
         $no_ba = $noba;
     }
-    $tglba = $p->tgl_pembayaran;
-    $hari = hari_indo($tglba);
 
     $id = $p->id_bast;
     $qlam = $this->db->query("SELECT * FROM tbl_lamp_bast WHERE id_bast = '$id' AND jenis = 2");

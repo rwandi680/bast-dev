@@ -55,14 +55,14 @@ body{
     $noba = $p->no_administratif;
     if(empty($noba) || $noba == NULL || $noba == "-")
     {
-        $no_ba = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /BPKD/".$thn;
+        $no_ba = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BPKD &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/".$thn;
     }else{
         $no_ba = $noba;
     }
     $nobast = $p->no_bast;
     if(empty($nobast) || $nobast == NULL || $nobast == "-")
     {
-        $no_bast = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /BPKD/".$thn;
+        $no_bast = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BPKD &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/".$thn;
     }else{
         $no_bast = $nobast;
     }

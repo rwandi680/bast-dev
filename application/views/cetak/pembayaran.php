@@ -44,12 +44,6 @@ body{
     <br>
 <?php  foreach($pem as $p){
     $noba = $p->no_pembayaran;
-    if(empty($noba) || $noba == NULL || $noba == "-")
-    {
-        $no_ba = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /BPKD/".date('Y');
-    }else{
-        $no_ba = $noba;
-    }
     $tglba = $p->tgl_pembayaran;
     $tgl = date('j',strtotime($tglba));
     $bln = date('n',strtotime($tglba));
@@ -60,6 +54,12 @@ body{
 	$tahun = number_to_words($thn);
 	$dpp = 100 / 110 * $p->nilai_kontrak;
 	$ppn = $dpp * 10 / 100;
+    if(empty($noba) || $noba == NULL || $noba == "-")
+    {
+        $no_ba = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BPKD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/".$thn;
+    }else{
+        $no_ba = $noba;
+    }
 ?>
 
     <p style='font-size:11.0pt;margin-bottom:0;text-align:center'>

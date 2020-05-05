@@ -54,14 +54,14 @@ body{
     $noba = $p->no_bast;
     if(empty($noba) || $noba == NULL || $noba == "-")
     {
-        $no_ba = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /BPKD/".$thn;
+        $no_ba = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BPKD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/".$thn;
     }else{
         $no_ba = $noba;
     }
     $nobapem = $p->no_pemeriksaan;
     if(empty($nobapem) || $nobapem == NULL || $nobapem == "-")
     {
-        $no_bapem = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /BPKD/".$thn;
+        $no_bapem = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BPKD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/".$thn;
     }else{
         $no_bapem = $nobapem;
     }

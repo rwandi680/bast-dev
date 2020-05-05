@@ -43,12 +43,6 @@ body{
     <br>
 <?php  foreach($pem as $p){
     $noba = $p->no_pemeriksaan;
-    if(empty($noba) || $noba == NULL || $noba == "-")
-    {
-        $no_ba = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /BPKD/".date('Y');
-    }else{
-        $no_ba = $noba;
-    }
     $tglba = $p->tgl_pemeriksaan;
     $tgl = date('j',strtotime($tglba));
     $bln = date('n',strtotime($tglba));
@@ -57,6 +51,12 @@ body{
     $tanggal = number_to_words($tgl);
     $bulan = bulan($bln);
     $tahun = number_to_words($thn);
+    if(empty($noba) || $noba == NULL || $noba == "-")
+    {
+        $no_ba = "027/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BPKD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/".$thn;
+    }else{
+        $no_ba = $noba;
+    }
 
 ?>
 

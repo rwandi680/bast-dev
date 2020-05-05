@@ -1,5 +1,5 @@
         <section class="container" id="sc1">
-            <h3>Daftar Lampiran</h3>
+            <h3>Daftar KEGIATAN</h3>
             <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#tambah">Tambah</button>
             <br>
             <br>

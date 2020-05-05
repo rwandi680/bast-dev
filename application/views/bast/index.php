@@ -33,7 +33,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="bast/addkontrak" method="post">
+            <form action="<?php echo site_url('bast/addkontrak') ?>" method="post">
             <div class="modal-body">
                 <div class="form-group">
                     <label for="no_kontrak">No. Kontrak*</label>
