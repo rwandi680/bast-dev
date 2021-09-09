@@ -1,23 +1,24 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Bast extends CI_Controller {
-    
-	function __construct()
-	{
-		parent::__construct();
-		$this->load->model('bast_model');
+class Bast extends CI_Controller
+{
+
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('bast_model');
     }
-    
-	public function index()
-	{
+
+    public function index()
+    {
         // $data['kontrak'] = $this->bast_model->get_list();
         $data['keg'] = $this->bast_model->get_keg();
         $data['ppk'] = $this->bast_model->get_ppk();
         $data['pphp'] = $this->bast_model->get_pphp();
 
         $this->load->view('include/head');
-		$this->load->view('bast/index',$data);
+        $this->load->view('bast/index', $data);
     }
 
     public function listkontrak()
@@ -26,17 +27,16 @@ class Bast extends CI_Controller {
 
         $ajax = [];
         $no = 1;
-        foreach($data['kontrak'] as $r)
-        {
+        foreach ($data['kontrak'] as $r) {
             $row = array(
                 'no' => $no++,
-                'nokontrak' => '<a href="'.site_url('bast/rinc/'.$r->id_kontrak).'">'.$r->no_kontrak.'</a>',
+                'nokontrak' => '<a href="' . site_url('bast/rinc/' . $r->id_kontrak) . '">' . $r->no_kontrak . '</a>',
                 'tgl' => date_indo($r->tgl_kontrak),
                 'nmpaket' => $r->nama_paket,
-                'nilaikontrak' => 'Rp. '.number_format($r->nilai_kontrak),
+                'nilaikontrak' => 'Rp. ' . number_format($r->nilai_kontrak),
                 'ppk' => $r->nama_ppk,
                 'penyedia' => $r->penyedia,
-                'opsi' => '<button class="btn btn-sm btn-primary item_edit" data-id="'.$r->id_kontrak.'">edit</button>',
+                'opsi' => '<button class="btn btn-sm btn-primary item_edit" data-id="' . $r->id_kontrak . '">edit</button>',
             );
 
             $ajax[] = $row;
@@ -90,7 +90,7 @@ class Bast extends CI_Controller {
             'id_keg' => $this->input->post('idkeg'),
             'sumber_dana' => $this->input->post('dana')
         );
-        $update = $this->bast_model->updatekontrak($idkontrak,$params);
+        $update = $this->bast_model->updatekontrak($idkontrak, $params);
         echo json_encode($update);
     }
 
@@ -99,26 +99,24 @@ class Bast extends CI_Controller {
         $idkontrak = $this->input->post('id');
         $data = $this->bast_model->get_kontrak_id($idkontrak);
         echo json_encode($data);
-    } 
+    }
 
     public function rinc($idkontrak)
     {
         $data['bast'] = $this->bast_model->get_bast($idkontrak);
         $this->load->view('include/head');
-        $this->load->view('bast/bast',$data);
+        $this->load->view('bast/bast', $data);
     }
 
     public function lamp($idbast)
     {
         $data['bast'] = $this->bast_model->get_bast_id($idbast);
-        if(isset($data['bast']['id_bast']))
-        {
+        if (isset($data['bast']['id_bast'])) {
             $data['lamp'] = $this->bast_model->get_lampiran($idbast);
 
             $this->load->view('include/head');
-            $this->load->view('bast/lampiran',$data);
-            
-        }else{
+            $this->load->view('bast/lampiran', $data);
+        } else {
             echo "error";
         }
     }
@@ -135,15 +133,14 @@ class Bast extends CI_Controller {
             'keterangan' => $this->input->post('ket'),
         );
         $this->bast_model->addlampiran($params);
-        redirect('bast/lamp/'.$this->input->post('id'));
+        redirect('bast/lamp/' . $this->input->post('id'));
     }
 
     public function addbast()
     {
         $idkontrak = $this->input->post('id');
         $data['bast'] = $this->bast_model->get_bast_kontrak($idkontrak);
-        if(isset($data['bast']['id_kontrak']))
-        {
+        if (isset($data['bast']['id_kontrak'])) {
             $params = array(
                 // 'id_kontrak' => $this->input->post('id'),
                 'no_pemeriksaan' => $this->input->post('pem'),
@@ -155,9 +152,9 @@ class Bast extends CI_Controller {
                 'no_pembayaran' => $this->input->post('no_bayar'),
                 'tgl_pembayaran' => $this->input->post('tgl_bayar'),
             );
-            $this->bast_model->updatebast($idkontrak,$params);
-            redirect('bast/rinc/'.$idkontrak);
-        }else{
+            $this->bast_model->updatebast($idkontrak, $params);
+            redirect('bast/rinc/' . $idkontrak);
+        } else {
             $params = array(
                 'id_kontrak' => $idkontrak,
                 'no_pemeriksaan' => $this->input->post('pem'),
@@ -170,7 +167,7 @@ class Bast extends CI_Controller {
                 'tgl_pembayaran' => $this->input->post('tgl_bayar'),
             );
             $this->bast_model->addbast($params);
-            redirect('bast/rinc/'.$idkontrak);
+            redirect('bast/rinc/' . $idkontrak);
         }
     }
 
@@ -181,7 +178,7 @@ class Bast extends CI_Controller {
 
         $this->pdf->setPaper('A4', 'potrait');
         $this->pdf->filename = "bas-pemeriksaan.pdf";
-        $this->pdf->load_view('cetak/pemeriksaan',$data);
+        $this->pdf->load_view('cetak/pemeriksaan', $data);
 
         // $this->load->view('cetak/pemeriksaan',$data);
     }
@@ -193,7 +190,7 @@ class Bast extends CI_Controller {
 
         $this->pdf->setPaper('A4', 'potrait');
         $this->pdf->filename = "bast.pdf";
-        $this->pdf->load_view('cetak/serahterima',$data);
+        $this->pdf->load_view('cetak/serahterima', $data);
 
         // $this->load->view('cetak/serahterima',$data);
     }
@@ -204,10 +201,11 @@ class Bast extends CI_Controller {
         $this->load->library('pdf');
 
         $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->set_options(['isRemoteEnabled', true]);
         $this->pdf->filename = "bas-admin.pdf";
-        $this->pdf->load_view('cetak/administratif',$data);
+        $this->pdf->load_view('cetak/administratif', $data);
 
-        // $this->load->view('cetak/serahterima',$data);
+        $this->load->view('cetak/administratif', $data);
     }
 
     public function cetakbayar($idkontrak)
@@ -217,7 +215,7 @@ class Bast extends CI_Controller {
 
         $this->pdf->setPaper('A4', 'potrait');
         $this->pdf->filename = "bas-pembyaran.pdf";
-        $this->pdf->load_view('cetak/pembayaran',$data);
+        $this->pdf->load_view('cetak/pembayaran', $data);
 
         // $this->load->view('cetak/serahterima',$data);
     }
@@ -229,7 +227,7 @@ class Bast extends CI_Controller {
 
         $this->pdf->setPaper('A4', 'potrait');
         $this->pdf->filename = "lamp-pemeriksaan.pdf";
-        $this->pdf->load_view('cetak/lamp_pemeriksaan',$data);
+        $this->pdf->load_view('cetak/lamp_pemeriksaan', $data);
     }
 
     public function cetaklampterima($idkontrak)
@@ -239,7 +237,7 @@ class Bast extends CI_Controller {
 
         $this->pdf->setPaper('A4', 'potrait');
         $this->pdf->filename = "lamp-bast.pdf";
-        $this->pdf->load_view('cetak/lamp_serahterima',$data);
+        $this->pdf->load_view('cetak/lamp_serahterima', $data);
     }
 
     public function cetaklampbayar($idkontrak)
@@ -249,14 +247,14 @@ class Bast extends CI_Controller {
 
         $this->pdf->setPaper('A4', 'potrait');
         $this->pdf->filename = "lamp-pembayaran.pdf";
-        $this->pdf->load_view('cetak/lamp_pembayaran',$data);
+        $this->pdf->load_view('cetak/lamp_pembayaran', $data);
     }
 
     public function kegiatan()
     {
         $data['keg'] = $this->bast_model->get_keg();
         $this->load->view('include/head');
-        $this->load->view('kegiatan',$data);
+        $this->load->view('kegiatan', $data);
     }
 
     public function addkeg()
@@ -268,5 +266,4 @@ class Bast extends CI_Controller {
         $this->bast_model->addkeg($params);
         redirect('bast/kegiatan');
     }
-
 }
